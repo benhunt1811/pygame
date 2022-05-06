@@ -1,0 +1,33 @@
+# imports pygame
+import pygame, os, time, random
+pygame.font.init()
+
+WIDTH = 750
+HEIGHT = 750
+WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
+BLUE = (0, 0, 255)
+
+pygame.display.set_caption("Space invaders")
+
+def main_loop():
+    run = True
+    FPS = 60
+    lives = 5
+    comic_sans = pygame.font.SysFont("comicsans", 50)
+    clock = pygame.time.Clock()
+
+    def redraw_window():
+        WINDOW.fill(BLUE)
+        lives_label = comic_sans.render(f"Lives: {lives}", 1, (255, 255, 255))
+        WINDOW.blit(lives_label, (10, 10))
+        pygame.display.update()
+
+
+    while run:
+        clock.tick(FPS)
+        redraw_window()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
+main_loop()
