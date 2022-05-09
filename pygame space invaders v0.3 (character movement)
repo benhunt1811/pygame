@@ -1,0 +1,65 @@
+# imports pygame
+import pygame, os, time, random
+pygame.font.init()
+
+WIDTH = 750
+HEIGHT = 750
+WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
+BLUE = (0, 0, 255)
+
+pygame.display.set_caption("Space invaders")
+
+class Ship:
+    def __init__(self, x, y, health = 100):
+        self.x = x
+        self.y = y
+        self.health = health
+        self.ship_img = None
+        self.laser_img = None
+        self.lasers = []
+        self.cool_down_counter = 0
+
+    def draw(self, window):
+        pygame.draw.rect(window, (255, 0, 0), (self.x, self.y, 50, 50))
+
+
+
+def main_loop():
+    run = True
+    FPS = 60
+    lives = 5
+    comic_sans = pygame.font.SysFont("comicsans", 50)
+
+    player_vel = 5
+
+    ship = Ship(300, 650)
+
+    clock = pygame.time.Clock()
+
+    def redraw_window():
+        WINDOW.fill(BLUE)
+        lives_label = comic_sans.render(f"Lives: {lives}", 1, (255, 255, 255))
+        WINDOW.blit(lives_label, (10, 10))
+
+        ship.draw(WINDOW)
+        pygame.display.update()
+
+
+    while run:
+        clock.tick(FPS)
+        redraw_window()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_a]:
+            ship.x -= player_vel
+        if keys[pygame.K_d]:
+            ship.x += player_vel
+        if keys[pygame.K_w]:
+            ship.y -= player_vel
+        if keys[pygame.K_s]:
+            ship.y += player_vel
+main_loop()
