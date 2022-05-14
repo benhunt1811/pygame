@@ -1,3 +1,13 @@
+# https://github.com/benhunt1811/pygame/blob/main/finished%20pygame%20space%20invaders
+
+
+# Assets used
+#https://pixabay.com/music/
+#https://toppng.com/show_download/219304/space-invaders-alien-space-invaders-alien-sprite/large
+#https://wallpapercave.com/galaxy-cartoon-wallpapers
+#https://www.clipartmax.com/middle/m2i8A0i8A0G6K9Z5_rocket-spacecraft-clip-art-cartoon-rocket-spaceship-png/
+#https://codepen.io/UmerJ/pen/bqxZBM
+
 # Importing
 import pygame, os, time, random
 pygame.font.init()
